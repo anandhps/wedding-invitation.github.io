@@ -20,7 +20,6 @@ class _ButtonSecondaryState extends State<ButtonSecondary> {
         splashColor: Colors.transparent,
         highlightColor: Colors.transparent,
         hoverColor: Colors.transparent,
-        selectedRowColor: Colors.transparent,
       ),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(

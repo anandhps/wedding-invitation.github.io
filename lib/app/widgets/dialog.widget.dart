@@ -16,7 +16,7 @@ class SweetDialog extends AlertDialog {
     this.barrierDismissible = true,
     this.dialogType = 'normal',
     String cancelText = '',
-    String confirmText = 'Oke',
+    String confirmText = 'Okay',
     String neutralText = '',
     Function()? onCancel,
     Function()? onConfirm,

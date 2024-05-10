@@ -1,3 +1,5 @@
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart' as maps;
 import 'package:wedding/repositories.dart';
@@ -25,234 +27,32 @@ class _View extends StatelessView<InvitationViewModel> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SpGrid(
-              width: MediaQuery.of(context).size.width,
-              children: [
-                SpGridItem(
-                  xs: 0,
-                  sm: 3,
-                  md: 3,
-                  lg: 3,
-                  child: Image.asset('assets/images/component-1.png'),
-                ),
-                SpGridItem(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: edgeByWidth(
-                      context: context,
-                      xs: 65,
-                      sm: 65,
-                      md: 30,
-                      lg: 160,
-                      xl: 160,
-                    ),
-                  ),
-                  xs: 12,
-                  sm: 6,
-                  md: 6,
-                  lg: 6,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Stack(
+            Container(
+                margin: EdgeInsetsDirectional.all(20.0),
+                child: Stack(
+                  children: [
+                    Container(
+                      height: MediaQuery.of(context).size.height,
+                      child: Column(
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              top: 20,
-                              bottom: 40,
-                              left: 10,
-                              right: 10,
-                            ),
-                            child: ClipOval(
-                              child: Image.asset(
-                                'assets/images/client.png',
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                          Positioned(
-                            bottom: 0,
-                            left: 0,
-                            right: 0,
+                          Container(
+                            padding: const EdgeInsets.only(top: 16.0),
+                            height: MediaQuery.of(context).size.height * 0.8,
                             child: Image.asset(
-                              'assets/images/component-9.png',
+                              'assets/images/2.png',
                               fit: BoxFit.fitWidth,
+                              width: double.infinity,
                             ),
                           ),
+                          SizedBox(height: 40),
+                          _buildSubtitleText(context),
                         ],
                       ),
-                      Text(
-                        'RSVP is a must/ Wajib Reservasi',
-                        textAlign: TextAlign.center,
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyText1!
-                            .copyWith(color: Colors.black),
-                      ),
-                      const SizedBox(height: 16),
-                      SizedBox(
-                        width: 200,
-                        height: edgeByWidth(
-                          context: context,
-                          xs: 40,
-                          sm: 40,
-                          md: 50,
-                          lg: 50,
-                          xl: 50,
-                        ),
-                        child: ButtonPrimary(
-                          textStyle:
-                              Theme.of(context).textTheme.headline2!.copyWith(
-                                  color: Colors.white,
-                                  fontSize: edgeByWidth(
-                                    context: context,
-                                    xs: 16,
-                                    sm: 16,
-                                    md: 16,
-                                    lg: 20,
-                                    xl: 20,
-                                  ),
-                                  fontWeight: FontWeight.w400),
-                          text: 'RSVP / Reservasi',
-                          onPressed: () => viewModel.enterReservation(),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SpGridItem(
-                  xs: 0,
-                  sm: 3,
-                  md: 3,
-                  lg: 3,
-                  child: Image.asset('assets/images/component-2.png'),
-                ),
-              ],
-            ),
-            Visibility(
-              visible: viewModel.userName.isNotEmpty,
-              child: SelectionArea(
-                child: Center(
-                  child: SpGrid(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(16),
                     ),
-                    margin: EdgeInsets.symmetric(
-                      vertical: 20,
-                      horizontal: edgeByWidth(
-                        context: context,
-                        xs: 16,
-                        sm: 16,
-                        md: 16,
-                        lg: 120,
-                        xl: 120,
-                      ),
-                    ),
-                    width: MediaQuery.of(context).size.width,
-                    children: [
-                      SpGridItem(
-                        xs: 0,
-                        sm: 0,
-                        md: 1,
-                        lg: 1,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Container(
-                              margin: const EdgeInsets.only(top: 100),
-                              child:
-                                  Image.asset('assets/images/component-7.png'),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SpGridItem(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 20,
-                          vertical: 24,
-                        ),
-                        xs: 12,
-                        sm: 12,
-                        md: 10,
-                        lg: 10,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Dear, ',
-                              textAlign: TextAlign.center,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headline2!
-                                  .copyWith(
-                                    color: IColors.pink50,
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: edgeByWidth(
-                                      context: context,
-                                      xs: 16,
-                                      sm: 16,
-                                      md: 24,
-                                      lg: 32,
-                                      xl: 32,
-                                    ),
-                                  ),
-                            ),
-                            const SizedBox(height: 8),
-                            Text(
-                              viewModel.userName,
-                              textAlign: TextAlign.center,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headline3!
-                                  .copyWith(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: edgeByWidth(
-                                        context: context,
-                                        xs: 40,
-                                        sm: 40,
-                                        md: 45,
-                                        lg: 56,
-                                        xl: 56,
-                                      )),
-                            ),
-                            const SizedBox(height: 11),
-                            Visibility(
-                              visible: viewModel.userAddress.isNotEmpty,
-                              child: Text(
-                                viewModel.userAddress,
-                                textAlign: TextAlign.center,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headline2!
-                                    .copyWith(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: edgeByWidth(
-                                          context: context,
-                                          xs: 16,
-                                          sm: 16,
-                                          md: 18,
-                                          lg: 22,
-                                          xl: 22,
-                                        )),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SpGridItem(
-                        xs: 0,
-                        sm: 0,
-                        md: 1,
-                        lg: 1,
-                        child: Image.asset('assets/images/component-8.png'),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
+                    _buildTitleText(),
+                    _buildBorder(context)
+                  ],
+                )),
             SelectionArea(
               child: SpGrid(
                 margin: const EdgeInsets.only(top: 56),
@@ -294,7 +94,7 @@ class _View extends StatelessView<InvitationViewModel> {
                         ),
                         const SizedBox(height: 24),
                         Text(
-                          'Muhammad Syauqi Alsunni, S.Sos.',
+                          'Poornima',
                           textAlign: TextAlign.center,
                           style:
                               Theme.of(context).textTheme.headline3!.copyWith(
@@ -311,7 +111,7 @@ class _View extends StatelessView<InvitationViewModel> {
                         ),
                         const SizedBox(height: 8),
                         Text(
-                          'The son of (Alm) H.Djoni Darwin Sutan Alamsyah & Hj. Susy Kemala',
+                          'The daughter Lorem Ipsum is simply dummy text of th',
                           textAlign: TextAlign.center,
                           style:
                               Theme.of(context).textTheme.headline2!.copyWith(
@@ -345,7 +145,7 @@ class _View extends StatelessView<InvitationViewModel> {
                         ),
                         const SizedBox(height: 16),
                         Text(
-                          'Puti Kayo Gebriecya, B.Sc.',
+                          'Manjunath',
                           textAlign: TextAlign.center,
                           style:
                               Theme.of(context).textTheme.headline3!.copyWith(
@@ -362,7 +162,7 @@ class _View extends StatelessView<InvitationViewModel> {
                         ),
                         const SizedBox(height: 8),
                         Text(
-                          'The daughter of dr. Amnur Rajo Kayo, MKM & Haslinda, SE',
+                          'The son Lorem Ipsum is simply dummy text of th',
                           textAlign: TextAlign.center,
                           style:
                               Theme.of(context).textTheme.headline2!.copyWith(
@@ -426,7 +226,7 @@ class _View extends StatelessView<InvitationViewModel> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Akad Nikah/ Marriage Ceremony',
+                            'Poornima - Manjunath / Marriage Ceremony',
                             style:
                                 Theme.of(context).textTheme.headline2!.copyWith(
                                     color: Colors.black,
@@ -449,7 +249,7 @@ class _View extends StatelessView<InvitationViewModel> {
                               ),
                               const SizedBox(width: 8),
                               Text(
-                                'Thursday, 2 March  2023',
+                                'Sunday, 14 July  2024',
                                 style: Theme.of(context)
                                     .textTheme
                                     .headline2!
@@ -476,7 +276,7 @@ class _View extends StatelessView<InvitationViewModel> {
                               ),
                               const SizedBox(width: 8),
                               Text(
-                                '08.00 - 10.00',
+                                '08.00 - 10.00 AM',
                                 style: Theme.of(context)
                                     .textTheme
                                     .headline2!
@@ -510,14 +310,14 @@ class _View extends StatelessView<InvitationViewModel> {
                                         lat: -0.3287901,
                                         long: 100.3660321,
                                         label:
-                                            'Mesjid Rambuti, Guguak Tinggi, Agam, Sumatera Barat');
+                                            'Shri Veerabhdreshwara Kalyana Mantapa,Neralagi . Hirekerur road, Shiralkoppa');
                                   },
                                   splashColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   hoverColor: Colors.transparent,
                                   splashFactory: NoSplash.splashFactory,
                                   child: Text(
-                                    'Mesjid Rambuti, Guguak Tinggi, Agam, Sumatera Barat',
+                                    'Shri Veerabhdreshwara Kalyana Mantapa,Neralagi . Hirekerur road, Shiralkoppa',
                                     style: Theme.of(context)
                                         .textTheme
                                         .headline2!
@@ -552,13 +352,13 @@ class _View extends StatelessView<InvitationViewModel> {
                               child: GoogleMap(
                                 mapType: MapType.normal,
                                 initialCameraPosition: const CameraPosition(
-                                    target: LatLng(-0.3287901, 100.3660321),
+                                    target: LatLng(14.37766, 75.26824),
                                     zoom: 16),
                                 markers: {
                                   maps.Marker(
                                     markerId: maps.MarkerId('$UniqueKey'),
                                     position: const maps.LatLng(
-                                        -0.3287901, 100.3660321),
+                                        14.37766, 75.26824),
                                     draggable: false,
                                     onDragEnd: (value) {
                                       // value is the new position
@@ -584,176 +384,14 @@ class _View extends StatelessView<InvitationViewModel> {
                         vertical: 16,
                       ),
                       decoration: BoxDecoration(
-                        color: IColors.pink50,
+                        color: Colors.pink,
                         borderRadius: BorderRadius.circular(16),
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Baralek Kampuang/ Wedding Reception in Bukittinggi',
-                            style:
-                                Theme.of(context).textTheme.headline2!.copyWith(
-                                    color: Colors.white,
-                                    fontSize: edgeByWidth(
-                                      context: context,
-                                      xs: 20,
-                                      sm: 20,
-                                      md: 24,
-                                      lg: 32,
-                                      xl: 32,
-                                    ),
-                                    fontWeight: FontWeight.w400),
-                          ),
-                          const SizedBox(height: 24),
-                          Row(
-                            children: [
-                              const Icon(
-                                Icons.calendar_month_rounded,
-                                color: Colors.white,
-                              ),
-                              const SizedBox(width: 8),
-                              Text(
-                                'Thursday, 2 March 2023',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headline2!
-                                    .copyWith(
-                                        color: Colors.white,
-                                        fontSize: edgeByWidth(
-                                          context: context,
-                                          xs: 16,
-                                          sm: 16,
-                                          md: 18,
-                                          lg: 22,
-                                          xl: 22,
-                                        ),
-                                        fontWeight: FontWeight.w400),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 24),
-                          Row(
-                            children: [
-                              const Icon(
-                                Icons.access_time_filled_rounded,
-                                color: Colors.white,
-                              ),
-                              const SizedBox(width: 8),
-                              Text(
-                                '15.00 - 17.00',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headline2!
-                                    .copyWith(
-                                        color: Colors.white,
-                                        fontSize: edgeByWidth(
-                                          context: context,
-                                          xs: 16,
-                                          sm: 16,
-                                          md: 18,
-                                          lg: 22,
-                                          xl: 22,
-                                        ),
-                                        fontWeight: FontWeight.w400),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 24),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const Icon(
-                                Icons.location_on_rounded,
-                                color: Colors.white,
-                              ),
-                              const SizedBox(width: 8),
-                              Expanded(
-                                child: InkWell(
-                                  onTap: () {
-                                    viewModel.openMap(
-                                        lat: -0.3070926,
-                                        long: 100.3689357,
-                                        label:
-                                            'Jl. H.Agus Salim no 1A, Bukittinggi, Sumatera Barat.');
-                                  },
-                                  splashColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  splashFactory: NoSplash.splashFactory,
-                                  child: Text(
-                                    'Jl. H.Agus Salim no 1A, Bukittinggi, Sumatera Barat.',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline2!
-                                        .copyWith(
-                                            color: Colors.white,
-                                            fontSize: edgeByWidth(
-                                              context: context,
-                                              xs: 16,
-                                              sm: 16,
-                                              md: 18,
-                                              lg: 22,
-                                              xl: 22,
-                                            ),
-                                            fontWeight: FontWeight.w400),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 24),
-                          AspectRatio(
-                            aspectRatio: edgeByWidth(
-                              context: context,
-                              xs: 1 / 1,
-                              sm: 1 / 1,
-                              md: 16 / 9,
-                              lg: 16 / 9,
-                              xl: 16 / 9,
-                            ),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: GoogleMap(
-                                mapType: MapType.normal,
-                                initialCameraPosition: const CameraPosition(
-                                    target: LatLng(-0.3070926, 100.3689357),
-                                    zoom: 16),
-                                markers: {
-                                  maps.Marker(
-                                    markerId: maps.MarkerId('$UniqueKey'),
-                                    position: const maps.LatLng(
-                                        -0.3070926, 100.3689357),
-                                    draggable: false,
-                                  )
-                                },
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  SpGridItem(
-                    xs: 12,
-                    sm: 12,
-                    md: 6,
-                    lg: 6,
-                    child: Container(
-                      margin: const EdgeInsets.only(bottom: 16),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 16,
-                      ),
-                      decoration: BoxDecoration(
-                        color: IColors.pink50,
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Pesta Resepsi/Wedding Reception in Jakarta',
+                            'Poornima - Manjunath / Marriage Reception',
                             style:
                                 Theme.of(context).textTheme.headline2!.copyWith(
                                     color: Colors.white,
@@ -794,41 +432,32 @@ class _View extends StatelessView<InvitationViewModel> {
                               ),
                             ],
                           ),
-                          Visibility(
-                            visible: viewModel.userSession.isNotEmpty,
-                            child: const SizedBox(height: 24),
-                          ),
-                          Visibility(
-                            visible: viewModel.userSession.isNotEmpty,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                const Icon(
-                                  Icons.alarm,
-                                  color: Colors.white,
-                                ),
-                                const SizedBox(width: 8),
-                                Expanded(
-                                  child: Text(
-                                    viewModel.userSession,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline2!
-                                        .copyWith(
-                                            color: Colors.white,
-                                            fontSize: edgeByWidth(
-                                              context: context,
-                                              xs: 16,
-                                              sm: 16,
-                                              md: 18,
-                                              lg: 22,
-                                              xl: 22,
-                                            ),
-                                            fontWeight: FontWeight.w400),
-                                  ),
-                                ),
-                              ],
-                            ),
+                          const SizedBox(height: 24),
+                          Row(
+                            children: [
+                              const Icon(
+                                Icons.access_time_filled_rounded,
+                                color: Colors.white,
+                              ),
+                              const SizedBox(width: 8),
+                              Text(
+                                '15.00 - 17.00 PM',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headline2!
+                                    .copyWith(
+                                        color: Colors.white,
+                                        fontSize: edgeByWidth(
+                                          context: context,
+                                          xs: 16,
+                                          sm: 16,
+                                          md: 18,
+                                          lg: 22,
+                                          xl: 22,
+                                        ),
+                                        fontWeight: FontWeight.w400),
+                              ),
+                            ],
                           ),
                           const SizedBox(height: 24),
                           Row(
@@ -843,17 +472,17 @@ class _View extends StatelessView<InvitationViewModel> {
                                 child: InkWell(
                                   onTap: () {
                                     viewModel.openMap(
-                                        lat: -6.2277417,
-                                        long: 106.8338776,
+                                        lat: -0.3070926,
+                                        long: 100.3689357,
                                         label:
-                                            'Jl. H.Agus Salim no 1A, Bukittinggi, Sumatera Barat.');
+                                            'Shri Veerabhdreshwara Kalyana Mantapa,Neralagi . Hirekerur road, Shiralkopp');
                                   },
                                   splashColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   hoverColor: Colors.transparent,
                                   splashFactory: NoSplash.splashFactory,
                                   child: Text(
-                                    'Palma One Grand Ballroom, Jl.HR Rasuna Said Kav. X-2 No. 4 Kuningan Jakarta Selatan, 12940',
+                                    'Shri Veerabhdreshwara Kalyana Mantapa,Neralagi . Hirekerur road, Shiralkoppa',
                                     style: Theme.of(context)
                                         .textTheme
                                         .headline2!
@@ -873,43 +502,213 @@ class _View extends StatelessView<InvitationViewModel> {
                               ),
                             ],
                           ),
+                          const SizedBox(height: 24),
+                          AspectRatio(
+                            aspectRatio: edgeByWidth(
+                              context: context,
+                              xs: 1 / 1,
+                              sm: 1 / 1,
+                              md: 16 / 9,
+                              lg: 16 / 9,
+                              xl: 16 / 9,
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8),
+                              child: GoogleMap(
+                                mapType: MapType.normal,
+                                initialCameraPosition: const CameraPosition(
+                                    target: LatLng(14.37766, 75.26824),
+                                    zoom: 16),
+                                markers: {
+                                  maps.Marker(
+                                    markerId: maps.MarkerId('$UniqueKey'),
+                                    position: const maps.LatLng(14.37766, 75.26824),
+                                    draggable: false,
+                                  )
+                                },
+                              ),
+                            ),
+                          )
                         ],
                       ),
                     ),
                   ),
-                  SpGridItem(
-                    xs: 12,
-                    sm: 12,
-                    md: 6,
-                    lg: 6,
-                    child: AspectRatio(
-                      aspectRatio: edgeByWidth(
-                        context: context,
-                        xs: 1 / 1,
-                        sm: 1 / 1,
-                        md: 16 / 9,
-                        lg: 16 / 9,
-                        xl: 16 / 9,
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(8),
-                        child: GoogleMap(
-                          mapType: MapType.normal,
-                          initialCameraPosition: const CameraPosition(
-                              target: LatLng(-6.2277417, 106.8338776),
-                              zoom: 16),
-                          markers: {
-                            maps.Marker(
-                              markerId: maps.MarkerId('$UniqueKey'),
-                              position:
-                                  const maps.LatLng(-6.2277417, 106.8338776),
-                              draggable: false,
-                            )
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
+                  // SpGridItem(
+                  //   xs: 12,
+                  //   sm: 12,
+                  //   md: 6,
+                  //   lg: 6,
+                  //   child: Container(
+                  //     margin: const EdgeInsets.only(bottom: 16),
+                  //     padding: const EdgeInsets.symmetric(
+                  //       horizontal: 20,
+                  //       vertical: 16,
+                  //     ),
+                  //     decoration: BoxDecoration(
+                  //       color: IColors.pink50,
+                  //       borderRadius: BorderRadius.circular(16),
+                  //     ),
+                  //     child: Column(
+                  //       crossAxisAlignment: CrossAxisAlignment.start,
+                  //       children: [
+                  //         Text(
+                  //           'Pesta Resepsi/Wedding Reception in Jakarta',
+                  //           style:
+                  //               Theme.of(context).textTheme.headline2!.copyWith(
+                  //                   color: Colors.white,
+                  //                   fontSize: edgeByWidth(
+                  //                     context: context,
+                  //                     xs: 20,
+                  //                     sm: 20,
+                  //                     md: 24,
+                  //                     lg: 32,
+                  //                     xl: 32,
+                  //                   ),
+                  //                   fontWeight: FontWeight.w400),
+                  //         ),
+                  //         const SizedBox(height: 24),
+                  //         Row(
+                  //           children: [
+                  //             const Icon(
+                  //               Icons.calendar_month_rounded,
+                  //               color: Colors.white,
+                  //             ),
+                  //             const SizedBox(width: 8),
+                  //             Text(
+                  //               'Sunday, 12 March 2023',
+                  //               style: Theme.of(context)
+                  //                   .textTheme
+                  //                   .headline2!
+                  //                   .copyWith(
+                  //                       color: Colors.white,
+                  //                       fontSize: edgeByWidth(
+                  //                         context: context,
+                  //                         xs: 16,
+                  //                         sm: 16,
+                  //                         md: 18,
+                  //                         lg: 22,
+                  //                         xl: 22,
+                  //                       ),
+                  //                       fontWeight: FontWeight.w400),
+                  //             ),
+                  //           ],
+                  //         ),
+                  //         Visibility(
+                  //           visible: viewModel.userSession.isNotEmpty,
+                  //           child: const SizedBox(height: 24),
+                  //         ),
+                  //         Visibility(
+                  //           visible: viewModel.userSession.isNotEmpty,
+                  //           child: Row(
+                  //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //             children: [
+                  //               const Icon(
+                  //                 Icons.alarm,
+                  //                 color: Colors.white,
+                  //               ),
+                  //               const SizedBox(width: 8),
+                  //               Expanded(
+                  //                 child: Text(
+                  //                   viewModel.userSession,
+                  //                   style: Theme.of(context)
+                  //                       .textTheme
+                  //                       .headline2!
+                  //                       .copyWith(
+                  //                           color: Colors.white,
+                  //                           fontSize: edgeByWidth(
+                  //                             context: context,
+                  //                             xs: 16,
+                  //                             sm: 16,
+                  //                             md: 18,
+                  //                             lg: 22,
+                  //                             xl: 22,
+                  //                           ),
+                  //                           fontWeight: FontWeight.w400),
+                  //                 ),
+                  //               ),
+                  //             ],
+                  //           ),
+                  //         ),
+                  //         const SizedBox(height: 24),
+                  //         Row(
+                  //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //           children: [
+                  //             const Icon(
+                  //               Icons.location_on_rounded,
+                  //               color: Colors.white,
+                  //             ),
+                  //             const SizedBox(width: 8),
+                  //             Expanded(
+                  //               child: InkWell(
+                  //                 onTap: () {
+                  //                   viewModel.openMap(
+                  //                       lat: -6.2277417,
+                  //                       long: 106.8338776,
+                  //                       label:
+                  //                           'Jl. H.Agus Salim no 1A, Bukittinggi, Sumatera Barat.');
+                  //                 },
+                  //                 splashColor: Colors.transparent,
+                  //                 highlightColor: Colors.transparent,
+                  //                 hoverColor: Colors.transparent,
+                  //                 splashFactory: NoSplash.splashFactory,
+                  //                 child: Text(
+                  //                   'Palma One Grand Ballroom, Jl.HR Rasuna Said Kav. X-2 No. 4 Kuningan Jakarta Selatan, 12940',
+                  //                   style: Theme.of(context)
+                  //                       .textTheme
+                  //                       .headline2!
+                  //                       .copyWith(
+                  //                           color: Colors.white,
+                  //                           fontSize: edgeByWidth(
+                  //                             context: context,
+                  //                             xs: 16,
+                  //                             sm: 16,
+                  //                             md: 18,
+                  //                             lg: 22,
+                  //                             xl: 22,
+                  //                           ),
+                  //                           fontWeight: FontWeight.w400),
+                  //                 ),
+                  //               ),
+                  //             ),
+                  //           ],
+                  //         ),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
+                  // SpGridItem(
+                  //   xs: 12,
+                  //   sm: 12,
+                  //   md: 6,
+                  //   lg: 6,
+                  //   child: AspectRatio(
+                  //     aspectRatio: edgeByWidth(
+                  //       context: context,
+                  //       xs: 1 / 1,
+                  //       sm: 1 / 1,
+                  //       md: 16 / 9,
+                  //       lg: 16 / 9,
+                  //       xl: 16 / 9,
+                  //     ),
+                  //     child: ClipRRect(
+                  //       borderRadius: BorderRadius.circular(8),
+                  //       child: GoogleMap(
+                  //         mapType: MapType.normal,
+                  //         initialCameraPosition: const CameraPosition(
+                  //             target: LatLng(-6.2277417, 106.8338776),
+                  //             zoom: 16),
+                  //         markers: {
+                  //           maps.Marker(
+                  //             markerId: maps.MarkerId('$UniqueKey'),
+                  //             position:
+                  //                 const maps.LatLng(-6.2277417, 106.8338776),
+                  //             draggable: false,
+                  //           )
+                  //         },
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
             ),
@@ -924,138 +723,7 @@ class _View extends StatelessView<InvitationViewModel> {
                   sm: 12,
                   md: 6,
                   lg: 6,
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(
-                      horizontal: 16,
-                    ),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: Column(
-                      children: [
-                        const SizedBox(height: 24),
-                        Text(
-                          'Send A Gift',
-                          textAlign: TextAlign.center,
-                          style:
-                              Theme.of(context).textTheme.headline3!.copyWith(
-                                  color: Colors.black,
-                                  fontSize: edgeByWidth(
-                                    context: context,
-                                    xs: 24,
-                                    sm: 24,
-                                    md: 35,
-                                    lg: 40,
-                                    xl: 40,
-                                  ),
-                                  fontWeight: FontWeight.w400),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.symmetric(
-                            horizontal: 16,
-                          ),
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 16,
-                            vertical: 24,
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Rekening Bank',
-                                textAlign: TextAlign.center,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headline2!
-                                    .copyWith(
-                                        color: Colors.black,
-                                        fontSize: edgeByWidth(
-                                          context: context,
-                                          xs: 16,
-                                          sm: 16,
-                                          md: 18,
-                                          lg: 24,
-                                          xl: 24,
-                                        ),
-                                        fontWeight: FontWeight.w400),
-                              ),
-                              const SizedBox(height: 16),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 16,
-                                ),
-                                child: Image.asset(
-                                  'assets/images/bank-bca.png',
-                                  width: 200,
-                                ),
-                              ),
-                              const SizedBox(height: 16),
-                              SelectionArea(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    const Icon(
-                                      Icons.person_outline_rounded,
-                                      color: Colors.black,
-                                    ),
-                                    const SizedBox(width: 8),
-                                    Text(
-                                      'Puti Kayo Gebriecya',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .headline2!
-                                          .copyWith(
-                                              color: Colors.black,
-                                              fontSize: edgeByWidth(
-                                                context: context,
-                                                xs: 14,
-                                                sm: 14,
-                                                md: 18,
-                                                lg: 20,
-                                                xl: 20,
-                                              ),
-                                              fontWeight: FontWeight.w600),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(height: 16),
-                              SelectionArea(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    const Icon(
-                                      Icons.credit_card_rounded,
-                                      color: Colors.black,
-                                    ),
-                                    const SizedBox(width: 8),
-                                    Text(
-                                      '2170025043',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .headline2!
-                                          .copyWith(
-                                              color: Colors.black,
-                                              fontSize: edgeByWidth(
-                                                context: context,
-                                                xs: 14,
-                                                sm: 14,
-                                                md: 18,
-                                                lg: 20,
-                                                xl: 20,
-                                              ),
-                                              fontWeight: FontWeight.w600),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  child: Container(),
                 ),
               ],
             ),
@@ -1416,4 +1084,72 @@ class _View extends StatelessView<InvitationViewModel> {
       ),
     );
   }
+  Widget _buildSubtitleText(BuildContext context) {
+    final dday = DateTime(2021, 6, 19);
+    final today = DateTime.now();
+    final difference = dday.difference(today).inDays;
+
+    var ddayText = difference > 0 ? 'Days D-$difference' : '';
+
+    return Column(
+      children: [
+        Text(
+          'Sunday, 14 July 2024',
+          style: TextStyle(fontSize: 18),
+        ),
+        SizedBox(height: 10),
+        Text(
+          ddayText,
+          style: TextStyle(fontSize: 15, color: Colors.black),
+          textAlign: TextAlign.center,
+        ),
+      ],
+    );
+  }
+  Widget _buildTitleText() {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.only(top: 60.0),
+        child: AutoSizeText(
+          'Poornima\n &\n Manjunath',
+          style: GoogleFonts.dancingScript(
+            textStyle: const TextStyle(color: Colors.blue, fontSize: 100, fontWeight: FontWeight.bold),
+          ),
+          textAlign: TextAlign.center,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSubtitleText1(BuildContext context) {
+    final dday = DateTime(2021, 6, 19);
+    final today = DateTime.now();
+    final difference = dday.difference(today).inDays;
+
+    var ddayText = difference > 0 ? '그 날까지 D-$difference' : '';
+
+    return Column(
+      children: [
+        Text(
+          'Welcome',
+          style: TextStyle(fontSize: 18),
+        ),
+        SizedBox(height: 10),
+        Text(
+          ddayText,
+          style: TextStyle(fontSize: 15, color: Colors.black),
+          textAlign: TextAlign.center,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildBorder(BuildContext context) {
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.8,
+      margin: const EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 0.0),
+      decoration: BoxDecoration(border: Border.all(color: Colors.black38)),
+    );
+  }
+
 }

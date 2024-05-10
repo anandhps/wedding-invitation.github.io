@@ -1,4 +1,3 @@
-export 'app.view.dart';
 export 'app.viewmodel.dart';
 export 'models/index.dart';
 export 'pages/index.dart';

@@ -114,8 +114,8 @@ class InvitationViewModel extends ViewModel {
       SweetDialog(
         context: context,
         dialogType: SweetDialogType.error,
-        title: 'Nama tidak boleh kosong',
-        content: 'Silahkan masukan nama lengkap kamu',
+        title: 'Name cannot be empty',
+        content: 'Please enter your full name',
       ).show();
       return;
     }
@@ -142,8 +142,8 @@ class InvitationViewModel extends ViewModel {
       SweetDialog(
         context: context,
         dialogType: SweetDialogType.success,
-        title: 'Berhasil',
-        content: 'Komentar berhasil dikirim',
+        title: 'Success',
+        content: 'Wishes sent successfully',
       ).show();
       fetchComment();
     }, onError: (e) {

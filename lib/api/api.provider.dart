@@ -69,7 +69,7 @@ class ApiProvider extends GetConnect {
               response.body['message'] ?? 'Gagal mengirim pesanan');
         } else {
           return Future.value(
-              response.body['message'] ?? 'Pesanan berhasil dikirim');
+              response.body['message'] ?? 'Pesanan Success dikirim');
         }
       }
     } catch (e) {
@@ -115,7 +115,7 @@ class ApiProvider extends GetConnect {
       log('result: ${response.statusCode}');
       if (response.status.hasError) {
         return Future.error(
-            response.statusText ?? 'Terjadi kesalahan saat mengirim komentar');
+            response.statusText ?? 'An error occurred while posting a comment');
       } else {
         if (response.body['status'] == false) {
           return Future.error(response.body['message']);
