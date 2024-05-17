@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -39,27 +37,26 @@ class _View extends StatelessView<InvitationViewModel> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              width: double.infinity,
-              decoration: BoxDecoration(
-                  image:  backgroundImage,
-                  border: Border.all(color: Colors.black38)),
-              height: MediaQuery.of(context).size.height,
-              margin: EdgeInsetsDirectional.only(top: 20.0,start : 20,end:  20),
-              child:Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text('Welcome',style: GoogleFonts.abrilFatface(
-                    textStyle: const TextStyle(color: Colors.green, letterSpacing: 4, fontSize: 36, fontWeight: FontWeight.bold),
-                  )),
-                  Text('To Our Wedding',style: GoogleFonts.abel(
-                    textStyle: const TextStyle(color: Colors.green, letterSpacing: 4, fontSize: 16, fontWeight: FontWeight.bold),
-                  )),
-                 GoogleText(),
-                ],
-              ),
-            ),
+            Container(width: double.infinity,
+          decoration: BoxDecoration(
+              image:  backgroundImage,
+              border: Border.all(color: Colors.black38)),
+          height: MediaQuery.of(context).size.height,
+          margin: EdgeInsetsDirectional.only(top: 20.0,start : 20,end:  20),
+          child:Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text('Welcome',style: GoogleFonts.abrilFatface(
+                textStyle: const TextStyle(color: Colors.green, letterSpacing: 4, fontSize: 36, fontWeight: FontWeight.bold),
+              )),
+              Text('To Our Wedding',style: GoogleFonts.abel(
+                textStyle: const TextStyle(color: Colors.green, letterSpacing: 4, fontSize: 16, fontWeight: FontWeight.bold),
+              )),
+              GoogleText(),
+            ],
+          ),
+        ),
             SizedBox(height: 10,),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -70,8 +67,115 @@ class _View extends StatelessView<InvitationViewModel> {
                 ),
               ],
             ),
+            SelectionArea(
+              child: SpGrid(
+                margin: const EdgeInsets.only(top: 56),
+                width: MediaQuery.of(context).size.width,
+                children: [
+                  SpGridItem(
+                    xs: 0,
+                    sm: 0,
+                    md: 3,
+                    lg: 3,
+                    child: Image.asset('assets/images/component-3.png'),
+                  ),
+                  SpGridItem(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                    ),
+                    xs: 12,
+                    sm: 12,
+                    md: 6,
+                    lg: 6,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          'The honor of  your presence is requested at the marriage of:',
+                          textAlign: TextAlign.center,
+                          style:
+                          Theme.of(context).textTheme.headline2!.copyWith(
+                              color: IColors.pink50,
+                              fontSize: edgeByWidth(
+                                context: context,
+                                xs: 16,
+                                sm: 16,
+                                md: 24,
+                                lg: 32,
+                                xl: 32,
+                              ),
+                              fontWeight: FontWeight.w400),
+                        ),
+                        const SizedBox(height: 24),
+                        Text(
+                          'Poornima',
+                          textAlign: TextAlign.center,
+                          style:
+                          Theme.of(context).textTheme.headline3!.copyWith(
+                              color: Colors.black,
+                              fontSize: edgeByWidth(
+                                context: context,
+                                xs: 35,
+                                sm: 35,
+                                md: 40,
+                                lg: 56,
+                                xl: 56,
+                              ),
+                              fontWeight: FontWeight.w400),
+                        ),
+                        const SizedBox(height: 8),
+                        const SizedBox(height: 16),
+                        Text(
+                          '&',
+                          textAlign: TextAlign.center,
+                          style:
+                          Theme.of(context).textTheme.headline3!.copyWith(
+                              color: IColors.pink50,
+                              fontSize: edgeByWidth(
+                                context: context,
+                                xs: 40,
+                                sm: 40,
+                                md: 45,
+                                lg: 56,
+                                xl: 56,
+                              ),
+                              fontWeight: FontWeight.w400),
+                        ),
+                        const SizedBox(height: 16),
+                        Text(
+                          'Manjunath',
+                          textAlign: TextAlign.center,
+                          style:
+                          Theme.of(context).textTheme.headline3!.copyWith(
+                              color: Colors.black,
+                              fontSize: edgeByWidth(
+                                context: context,
+                                xs: 35,
+                                sm: 35,
+                                md: 40,
+                                lg: 56,
+                                xl: 56,
+                              ),
+                              fontWeight: FontWeight.w400),
+                        ),
+                        const SizedBox(height: 8),
+                      ],
+                    ),
+                  ),
+                  SpGridItem(
+                    xs: 0,
+                    sm: 0,
+                    md: 3,
+                    lg: 3,
+                    child: Image.asset('assets/images/component-4.png'),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 56),
             Container(
-              margin: const EdgeInsets.symmetric(
+              margin: const EdgeInsets.only(bottom: 16),
+              padding: const EdgeInsets.symmetric(
                 horizontal: 20,
                 vertical: 16,
               ),
@@ -195,15 +299,8 @@ class _View extends StatelessView<InvitationViewModel> {
                     ],
                   ),
                   const SizedBox(height: 24),
-                  AspectRatio(
-                    aspectRatio: edgeByWidth(
-                      context: context,
-                      xs: 1 / 1,
-                      sm: 1 / 1,
-                      md: 16 / 6,
-                      lg: 16 / 6,
-                      xl: 16 / 6,
-                    ),
+                  Container(
+                    height: 300,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8),
                       child: GoogleMap(
@@ -229,7 +326,6 @@ class _View extends StatelessView<InvitationViewModel> {
               ),
             ),
             const SizedBox(height: 56),
-
             SpGrid(
               alignment: WrapAlignment.center,
               crossAlignment: WrapCrossAlignment.center,
@@ -480,7 +576,7 @@ class _View extends StatelessView<InvitationViewModel> {
               viewModel.showedComments.length != viewModel.comments.length,
               child: Center(
                 child: SizedBox(
-                  width: 150,
+                  width: 100,
                   height: 46,
                   child: ButtonPrimary(
                     text: 'Load More',
