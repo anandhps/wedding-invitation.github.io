@@ -110,55 +110,36 @@ class _View extends StatelessView<InvitationViewModel> {
                         Text(
                           'Poornima',
                           textAlign: TextAlign.center,
-                          style:
-                          Theme.of(context).textTheme.headline3!.copyWith(
-                              color: Colors.black,
-                              fontSize: edgeByWidth(
-                                context: context,
-                                xs: 35,
-                                sm: 35,
-                                md: 40,
-                                lg: 56,
-                                xl: 56,
-                              ),
-                              fontWeight: FontWeight.w400),
+                          style:  TextStyle(
+                          fontFamily: 'DancingScript',
+                          fontWeight:  FontWeight.w400,
+                          fontSize: 70,
+                          color: Colors.black,
+                        ),
                         ),
                         const SizedBox(height: 8),
-                        const SizedBox(height: 16),
                         Text(
                           '&',
                           textAlign: TextAlign.center,
-                          style:
-                          Theme.of(context).textTheme.headline3!.copyWith(
-                              color: IColors.pink50,
-                              fontSize: edgeByWidth(
-                                context: context,
-                                xs: 40,
-                                sm: 40,
-                                md: 45,
-                                lg: 56,
-                                xl: 56,
-                              ),
-                              fontWeight: FontWeight.w400),
+                          style:  TextStyle(
+                            fontSize: 70,
+                            fontFamily: 'DancingScript',
+                            fontWeight:  FontWeight.w400,
+                            color: Colors.black,
+                          ),
                         ),
-                        const SizedBox(height: 16),
+                        const SizedBox(height: 8),
                         Text(
                           'Manjunath',
                           textAlign: TextAlign.center,
-                          style:
-                          Theme.of(context).textTheme.headline3!.copyWith(
-                              color: Colors.black,
-                              fontSize: edgeByWidth(
-                                context: context,
-                                xs: 35,
-                                sm: 35,
-                                md: 40,
-                                lg: 56,
-                                xl: 56,
-                              ),
-                              fontWeight: FontWeight.w400),
+                          style:  TextStyle(
+                            fontSize: 70,
+                            fontFamily: 'DancingScript',
+                            fontWeight:  FontWeight.w400,
+                            color: Colors.black,
+                          ),
                         ),
-                        const SizedBox(height: 8),
+                        const SizedBox(height: 16),
                       ],
                     ),
                   ),
@@ -576,7 +557,7 @@ class _View extends StatelessView<InvitationViewModel> {
               viewModel.showedComments.length != viewModel.comments.length,
               child: Center(
                 child: SizedBox(
-                  width: 100,
+                  width: 150,
                   height: 46,
                   child: ButtonPrimary(
                     text: 'Load More',

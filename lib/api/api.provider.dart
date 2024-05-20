@@ -33,7 +33,8 @@ class ApiProvider extends GetConnect {
         if (response.body['status'] == false) {
           return Future.error(response.body['message'] ?? 'No comment found');
         } else {
-          final comments = response.body['data'] as List;
+          var comments = response.body['data'] as List;
+          comments = comments.sublist(27);
           return comments.map((e) => CommentModel.fromJson(e)).toList();
         }
       }
